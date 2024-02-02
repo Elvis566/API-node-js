@@ -21,6 +21,3 @@ export const TypesUser = sequelize.define(
     timestamps: false,
   }
 );
-(async () => {
-  await TypesUser.sync({ force: true });
-})();

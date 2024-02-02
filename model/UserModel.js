@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../DB/conexion.js";
+import { TypesUser} from '../model/TypeModel.js'
 export const UserModel = sequelize.define("users", {
   id: {
     type: DataTypes.INTEGER,
@@ -26,6 +27,6 @@ export const UserModel = sequelize.define("users", {
 {
     timestamps :false
 });
-(async () => {
-  await UserModel.sync({ force: true });
-})();
+
+TypesUser.hasMany(UserModel, { foreignKey: "typeusers_id" });
+UserModel.belongsTo(TypesUser, { foreignKey: "typeusers_id" });
